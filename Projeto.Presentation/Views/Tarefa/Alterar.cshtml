@@ -1,0 +1,29 @@
+﻿@model Projeto.Presentation.Models.TarefaViewModel
+@{
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h4>Alterar tarefa</h4>
+Preencha os campos abaixo para alterar a tarefa.
+<br />
+<br />
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.TarefaId)
+    @Html.TextBoxFor(model => model.Titulo,
+            new { @class = "form-control col-md-4", @placeholder = "Digite aqui" })
+    <div class="text-danger">
+        @Html.ValidationMessageFor(model => model.Titulo)
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Alterar Usuário" class="btn btn-success" />
+
+    <br />
+    <br />
+    @ViewBag.Mensagem
+
+}

@@ -1,0 +1,49 @@
+﻿@model List<Projeto.Presentation.Models.UsuarioViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Usuários</h2>
+<hr />
+<a href="/usuario/cadastro" class="btn btn-primary" >Cadastrar Usuário</a>
+<br />
+<table class="table table-condensed">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Alterar</th>
+            <th scope="col">Excluir</th>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Login</th>
+        </tr>
+    </thead>
+    
+  
+    <tbody>
+
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td scope="row">
+                    <a href="/Usuario/Alterar?usuarioId=@item.UsuarioId"
+                       class="btn btn-primary">
+                        Alterar
+                    </a>
+                </td>
+                <td scope="row">
+                    <a href="/Usuario/Excluir?usuarioId=@item.UsuarioId"
+                       onclick="return confirm('Deseja excluir o funcionário?');"
+                       class="btn btn-danger btn-sm">
+                        Excluir
+                    </a>
+                </td>
+                <th scope="row">@item.UsuarioId</th>
+                <td>@item.Nome</td>
+                <td>@item.Email</td>
+                <td>@item.Login</td>
+            </tr>
+        }
+    </tbody>
+</table>

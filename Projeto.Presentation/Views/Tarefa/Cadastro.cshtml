@@ -1,0 +1,28 @@
+﻿@model List<Projeto.Presentation.Models.TarefaViewModel
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h4>Inclusão de Tarefa</h4>
+Preencha o campo abaixo para incluir a tarefa.
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <label>Nome da tarefa:</label>
+    @Html.TextBoxFor(model => model.Titulo,
+            new { @class = "form-control col-md-4", @placeholder = "Digite aqui" })
+    <div class="text-danger">
+        @Html.ValidationMessageFor(model => model.Titulo)
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Cadastrar tarefa" class="btn btn-success" />
+
+    <br />
+    <br />
+    @ViewBag.Mensagem
+}
+

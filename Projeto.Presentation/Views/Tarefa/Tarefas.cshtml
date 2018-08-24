@@ -1,0 +1,65 @@
+﻿@model List<Projeto.Presentation.Models.TarefaViewModel>
+@{
+    ViewBag.Title = "Tarefas";
+    Layout = "~/Views/Shared/Layout.cshtml";
+
+}
+<h4>Consulta de Tarefas</h4>
+
+Relação de tarefas cadastradas.
+
+<br />
+<br />
+<hr />
+<a href="/tarefa/cadastro" class="btn btn-primary">Cadastrar Tarefa</a>
+<br />
+<div>
+
+    <strong>@ViewBag.Mensagem</strong>
+
+</div>
+
+<table class="table table-condensed">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
+            <th scope="col">Feito</th>
+            <th scope="col">TarefaId</th>
+            <th scope="col">Título</th>
+            <th scope="col">Feito?</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td scope="row">
+                    <a href="/Tarefa/Alterar?tarefaId=@item.TarefaId"
+                       class="btn btn-primary btn-sm">
+                       Editar
+                    </a>
+                </td>
+                <td scope="row">
+                    <a href="/Tarefa/Excluir?tarefaId=@item.TarefaId"
+                       onclick="return confirm('Deseja excluir a tarefa?');"
+                       class="btn btn-danger btn-sm">
+                       Excluir
+                    </a>
+                </td>
+                <td scope="row">
+                    <a href="/Tarefa/Feito?tarefaId=@item.TarefaId"
+                       class="btn btn-success btn-sm">
+                        Feito
+                    </a>
+                </td>
+                <td scope="row">@item.TarefaId</td>
+                <td>@item.Titulo</td>
+                <td>@(item.IsConcluido ? "Sim" : "Não")</td>
+            </tr>
+          }
+    </tbody>
+</table>
+
+
